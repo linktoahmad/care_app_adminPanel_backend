@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(148.46deg, #fffd87, #ff6677, #ff5f9a, #00d2ff);
+}
+
+.card {
+  height: 500px;
+  width: 400px;
+  background: linear-gradient(
+    150.46deg,
+    rgba(255, 255, 255, 0.5) -12.61%,
+    rgba(255, 255, 255, 0.25) 110.1%
+  );
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.card h2 {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.card .inputBox {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.card .inputBox input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card .inputBox textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100PX;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card .btn {
+  background: white;
+  color: #000;
+  border-radius: 20px;
+  width: 140px;
+  font-size: 16px;
+  margin-left: 10px;
+  height: 35px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.card .forget {
+  color: #fff;
+}
+
+.card .forget a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+}

@@ -6,6 +6,7 @@ const User = require("../db/User");
 const Question = require("../db/Questions");
 const Activity = require("../db/Activities");
 const History = require("../db/History");
+const Mood = require("../db/Mood");
 
 const router = express.Router();
 
@@ -197,6 +198,19 @@ router.get("/getActivities", (req, res) => {
 router.post("/getMoodActivities", (req, res) => {
   const data = req.body;
   Activity.find({ mood: data.mood })
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
+// test ok
+// to get mood based on score
+router.get("/getMood/:id", (req, res) => {
+  const score = req.params.id;
+  Mood.findOne({ score: score })
     .then((result) => {
       res.json(result);
     })

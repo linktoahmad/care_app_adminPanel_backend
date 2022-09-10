@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const passportConfig = require("./lib/passportConfig");
 const cors = require("cors");
 const fs = require("fs");
+const Mood = require("./db/Mood");
 
 // MongoDB
 mongoose
@@ -37,6 +38,27 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cors());
 app.use(express.json());
 app.use(passportConfig.initialize());
+
+//add data 
+
+async function fill_db () {
+    const docs = [
+      {mood: "depressed", score: 10, description: ""},
+      {mood: "stressed", score: 20, description: ""},
+      {mood: "upset", score: 30, description: ""},
+      {mood: "tense", score: 40, description: ""},
+      {mood: "fatigued", score: 50, description: ""},
+      {mood: "calm", score: 60, description: ""},
+      {mood: "relaxed", score: 70, description: ""},
+      {mood: "happy", score: 80, description: ""},
+      {mood: "excited", score: 90, description: ""},
+      {mood: "joy", score: 100, description: ""},
+    ];
+    const result = await Mood.insertMany(docs);
+}
+fill_db()
+  
+
 
 // Routing
 app.use("/auth", require("./routes/authRoutes"));

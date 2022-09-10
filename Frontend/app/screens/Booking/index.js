@@ -77,43 +77,11 @@ export default function Booking({navigation}) {
                 _id: res.data._id,
                 score: sum / 10,
               })
-              .then(res => {
-                console.log(res.data.message);
-                // moods enum=[depressed,stressed,upset,tense,fatigued,calm,relaxed,happy,excited,joy]
-                switch (true) {
-                  case sum / 10 <= 10:
-                    SaveMood('depressed');
-                    break;
-                  case sum / 10 > 10 && sum / 10 <= 20:
-                    SaveMood('stressed');
-                    break;
-                  case sum / 10 > 20 && sum / 10 <= 30:
-                    SaveMood('upset');
-                    break;
-                  case sum / 10 > 30 && sum / 10 <= 40:
-                    SaveMood('tense');
-                    break;
-                  case sum / 10 > 40 && sum / 10 <= 50:
-                    SaveMood('fatigued');
-                    break;
-                  case sum / 10 > 50 && sum / 10 <= 60:
-                    SaveMood('calm');
-                    break;
-                  case sum / 10 > 60 && sum / 10 <= 70:
-                    SaveMood('relaxed');
-                    break;
-                  case sum / 10 > 70 && sum / 10 <= 80:
-                    SaveMood('happy');
-                    break;
-                  case sum / 10 > 80 && sum / 10 <= 90:
-                    SaveMood('excited');
-                    break;
-                  case sum / 10 > 90:
-                    SaveMood('joy');
-                    break;
-                  default:
-                  // code block
+              .then(() => {
+                axios.get(apiList.GetMoodOnScore+`/${Math.round(sum / 10) * 10}`).then(res => {
+                  SaveMood(res.data.mood)
                 }
+                )
               });
           });
       }
@@ -174,8 +142,8 @@ export default function Booking({navigation}) {
   };
 
   useEffect(() => {
-    console.log(totalScore.quizData.date);
-    console.log(totalScore.quizData.mood);
+    // console.log(totalScore.quizData.date);
+    // console.log(totalScore.quizData.mood);
     if (
       totalScore.quizData.date === new Date().toISOString('uk').substring(0, 10)
     ) {
@@ -269,7 +237,7 @@ export default function Booking({navigation}) {
             </View>
             <Card
               style={[styles.promotionItem]}
-              image={activity.image}
+              image={`${serverIp}`+activity.image}
               onPress={() =>
                 navigation.navigate('HotelDetail', {activity: activity})
               }>

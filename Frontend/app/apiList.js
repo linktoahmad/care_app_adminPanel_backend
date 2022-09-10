@@ -1,4 +1,4 @@
-export const serverIp = 'http://192.168.0.4:4000';
+export const serverIp = 'http://192.168.10.8:4000';
 
 const apiList = {
   signup: `${serverIp}/auth/signup`,
@@ -10,6 +10,7 @@ const apiList = {
   GetMoodActivity: `${serverIp}/api/getMoodActivities`,
   GetDisplayActivity: `${serverIp}/api/getActivities`,
   GetDashboardData: `${serverIp}/api/getDashboardData`,
+  GetMoodOnScore: `${serverIp}/api/getmood`,
 };
 
 export default apiList;

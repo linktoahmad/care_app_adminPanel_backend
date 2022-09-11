@@ -23,6 +23,7 @@ router.post("/signup", (req, res, next) => {
       // Token
       const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
       res.json({
+        id:user._id,
         token: token,
       });
     })
@@ -46,6 +47,7 @@ router.post("/signup", (req, res, next) => {
                   // Token
                   const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
                   res.json({
+                    id:user._id,
                     token: token,
                     type: user.type,
                   });
@@ -100,6 +102,7 @@ router.post("/login", (req, res, next) => {
       // Token
       const token = jwt.sign({ _id: user._id }, authKeys.jwtSecretKey);
       res.json({
+        id:user._id,
         token: token,
         type: user.type,
       });

@@ -128,6 +128,31 @@ router.post("/getQuizData", (req, res) => {
 
 
 
+// test ok
+// check get quiz mood and data
+router.get("/getQuizData/:id", (req,res) => {
+  const today = new Date()
+  let tomorrow =  new Date()
+  tomorrow.setDate(today.getDate() + 1)
+  History.findOne({
+    dateOfQuiz: {"$gte": new Date(`${today.toISOString("uk").substring(0,10)}T00:00:00.000Z`),
+    "$lt": new Date(`${tomorrow.toISOString("uk").substring(0,10)}T00:00:00.000Z`)},
+    userId: req.params.id,
+  })
+    .then((result) => {
+      result==null?res.json(result):
+      Mood.findOne({ score: Math.round(result.score/10)*10 })
+      .then((result) => {
+        console.log(result)
+        res.json(result);
+      })
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
+
 
 
 // test ok

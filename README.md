@@ -1,2 +1,2 @@
-# Care app react native 
+# Care app backend
 backend based on node js and database is mongo db

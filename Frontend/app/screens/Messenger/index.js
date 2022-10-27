@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {RefreshControl, FlatList, View} from 'react-native';
+import {RefreshControl, FlatList, View, AsyncStorage} from 'react-native';
 import {BaseColor, useTheme, DefaultFont} from '@config';
 import {Text, Icon, FormOption} from '@components';
 import {Header, SafeAreaView, ListThumbSquare} from '@components';
@@ -15,6 +15,20 @@ import {Calendar} from 'react-native-calendars';
 // getting history data
 
 export default function Messenger({navigation}) {
+
+  const user_id = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@storage_Key');
+      if (value !== null) {
+        console.log("___________________________X_____________X__________________")
+        console.log(value);
+        console.log("___________________________X_____________X__________________")
+      }
+    } catch (error) {
+      // Error retrieving data
+    }
+  };
+
   const {colors} = useTheme();
   const {t} = useTranslation();
 
@@ -87,6 +101,9 @@ export default function Messenger({navigation}) {
             },
           };
         });
+        console.log("________________________________X_________________________________")
+        console.log(x)
+        console.log("________________________________X_________________________________")
         setHistory(x);
       })
       .catch(e => {
@@ -95,7 +112,9 @@ export default function Messenger({navigation}) {
   };
 
   useEffect(() => {
+    user_id();
     getHistory();
+    
   }, []);
 
   return (
